@@ -1,0 +1,65 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "watch": "tsdx test --watch",
+    "debug": "tsdx test --debug",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "deploy:dev": "tsdx build && sls deploy",
+    "deploy:prod": "tsdx build && sls deploy -s production"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "tsdx-sls-aws-lambda",
+  "author": "haruharuharuby",
+  "module": "dist/tsdx-sls-aws-lambda.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/tsdx-sls-aws-lambda.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/tsdx-sls-aws-lambda.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^5.0.3",
+    "@types/aws-lambda": "^8.10.83",
+    "husky": "^7.0.2",
+    "serverless-deployment-bucket": "^1.5.1",
+    "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-layers": "^2.5.1",
+    "serverless-prune-plugin": "^1.5.1",
+    "size-limit": "^5.0.3",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.2"
+  },
+  "dependencies": {}
+}
